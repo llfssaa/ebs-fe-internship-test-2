@@ -8,5 +8,5 @@ Create application for Calculator that will be able to Add, subtract, multiply, 
 3. Atomic Design Pattern (ask your mentor first)
 
 ## Design examples:
-[Calculator 1](https://prnt.sc/t49oxf)
-[Calculator 2](https://prnt.sc/t49ptg)
+1. [Calculator 1](https://prnt.sc/t49oxf)
+2. [Calculator 2](https://prnt.sc/t49ptg)
