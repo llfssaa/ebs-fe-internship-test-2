@@ -3,13 +3,13 @@ import './button.scss';
 
 export interface IButton {
   className: string;
-  value: number;
+  value: string;
 }
 // eslint-disable-next-line no-unused-vars
 function Button({ className, value }: IButton) {
   return (
-    <button type="button" className="button">
-      value
+    <button type="button" className={className}>
+      {value}
     </button>
   );
 }

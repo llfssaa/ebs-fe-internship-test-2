@@ -1,0 +1,18 @@
+
+.buttonBox {
+  width: 460px;
+  height: 480px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  grid-template-areas:
+    ". . . ."
+    ". . . ."
+    ". . . ."
+    ". . . ."
+    "a a . .";
+}
+.zero { grid-area: a; }
+.gr {background-color: #4F4F51}
+.or {background-color: #CC7F0A}
+

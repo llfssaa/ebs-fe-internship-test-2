@@ -1,14 +1,12 @@
 .screen {
-  height: 100px;
-  width: 100%;
-  margin-bottom: 10px;
+  height: 120px;
+  width: 460px;
   padding: 10px;
-  background-color: #4357692d;
-  border-radius: 10px;
+  background-color: #424244;
   display: flex;
-  align-items: center;
+  align-items: end;
   justify-content: flex-end;
   color: white;
-  font-weight: bold;
+  font-size: 80px;
   box-sizing: border-box;
 }
