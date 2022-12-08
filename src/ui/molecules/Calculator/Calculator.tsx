@@ -4,10 +4,53 @@ import ButtonBox from '../ButtonBox/ButtonBox';
 import './calculator.scss';
 
 function Calculator() {
+  const [screenValue, setScreenValue] = React.useState('0');
+  const [sign, setSign] = React.useState('');
+  const keyboardHandler = (value: string): void => {
+    const btnNum = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0'];
+    if (btnNum.includes(value)) {
+      if (screenValue === '0') {
+        setScreenValue(value);
+      } else {
+        setScreenValue(screenValue + value);
+      }
+    }
+    const screenValuePrev = screenValue;
+    if (!btnNum.includes(value) && value !== '=') {
+      setSign(value);
+      setScreenValue('0');
+    }
+    if (value === '=') {
+      if (sign === '+') {
+        setScreenValue((Number(screenValuePrev) + Number(screenValue)).toString());
+      }
+      if (sign === '-') {
+        setScreenValue((Number(screenValuePrev) - Number(screenValue)).toString());
+      }
+      if (sign === '*') {
+        setScreenValue((Number(screenValuePrev) * Number(screenValue)).toString());
+      }
+      if (sign === '/') {
+        setScreenValue((Number(screenValuePrev) / Number(screenValue)).toString());
+      }
+      if (sign === '%') {
+        setScreenValue((Number(screenValuePrev) % Number(screenValue)).toString());
+      }
+      if (sign === '+/-') {
+        setScreenValue((Number(screenValuePrev) * -1).toString());
+      }
+      if (sign === 'AC') {
+        setScreenValue('0');
+      }
+
+      setSign('');
+    }
+  };
+  // const screenDriver = (value: string) => {};
   return (
     <div className="wrapper">
       <Screen />
-      <ButtonBox />
+      <ButtonBox keyboardHandler={keyboardHandler} />
     </div>
   );
 }

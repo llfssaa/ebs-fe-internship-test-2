@@ -1,29 +1,36 @@
 import React from 'react';
 import './buttonBox.scss';
 import Button from '../../atoms/Button/Button';
+import { IButton, IButtonBox } from '../../../types';
 
-function ButtonBox() {
+const keyboardConfig: IButton[] = [
+  { className: 'button', value: 'AC' },
+  { className: 'button', value: '+/-' },
+  { className: 'button', value: '%' },
+  { className: 'button', value: '/' },
+  { className: 'button', value: '1' },
+  { className: 'button', value: '2' },
+  { className: 'button', value: '3' },
+  { className: 'button', value: '*' },
+  { className: 'button', value: '4' },
+  { className: 'button', value: '5' },
+  { className: 'button', value: '6' },
+  { className: 'button', value: '+' },
+  { className: 'button', value: '7' },
+  { className: 'button', value: '8' },
+  { className: 'button', value: '9' },
+  { className: 'button', value: '-' },
+  { className: 'button zero', value: '0' },
+  { className: 'button', value: '.' },
+  { className: 'button', value: '=' },
+];
+
+function ButtonBox({ keyboardHandler }: IButtonBox) {
   return (
     <div className="buttonBox">
-      <Button className="button gr" value="AC" />
-      <Button className="button gr" value="+/-" />
-      <Button className="button gr" value="%" />
-      <Button className="button or" value="/" />
-      <Button className="button" value="1" />
-      <Button className="button" value="2" />
-      <Button className="button" value="3" />
-      <Button className="button or" value="*" />
-      <Button className="button" value="4" />
-      <Button className="button" value="5" />
-      <Button className="button" value="6" />
-      <Button className="button or" value="+" />
-      <Button className="button" value="7" />
-      <Button className="button" value="8" />
-      <Button className="button" value="9" />
-      <Button className="button or" value="-" />
-      <Button className="button zero" value="0" />
-      <Button className="button" value="." />
-      <Button className="button or" value="=" />
+      {keyboardConfig.map((button) => (
+        <Button keyboardHandler={keyboardHandler} className={button.className} value={button.value} />
+      ))}
     </div>
   );
 }
