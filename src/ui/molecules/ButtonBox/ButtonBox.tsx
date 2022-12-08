@@ -29,7 +29,12 @@ function ButtonBox({ keyboardHandler }: IButtonBox) {
   return (
     <div className="buttonBox">
       {keyboardConfig.map((button) => (
-        <Button keyboardHandler={keyboardHandler} className={button.className} value={button.value} />
+        <Button
+          key={button.value}
+          keyboardHandler={keyboardHandler}
+          className={button.className}
+          value={button.value}
+        />
       ))}
     </div>
   );

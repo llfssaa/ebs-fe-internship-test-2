@@ -1,8 +1,11 @@
 import React from 'react';
 import './screen.scss';
 
-function Screen() {
-  return <div className="screen">0</div>;
+interface IScreen {
+  screenValue: string;
+}
+function Screen({ screenValue }: IScreen) {
+  return <div className="screen">{screenValue}</div>;
 }
 
 export default Screen;

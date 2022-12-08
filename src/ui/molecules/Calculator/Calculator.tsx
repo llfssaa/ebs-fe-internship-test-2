@@ -15,8 +15,9 @@ function Calculator() {
         setScreenValue(screenValue + value);
       }
     }
-    const screenValuePrev = screenValue;
+    let screenValuePrev = '';
     if (!btnNum.includes(value) && value !== '=') {
+      screenValuePrev = screenValue;
       setSign(value);
       setScreenValue('0');
     }
@@ -45,11 +46,14 @@ function Calculator() {
 
       setSign('');
     }
+    console.log(`sign= ${sign}`);
+    console.log(`screenValuePrev= ${screenValuePrev}`);
+    console.log(`screenValue= ${screenValue}`);
   };
   // const screenDriver = (value: string) => {};
   return (
     <div className="wrapper">
-      <Screen />
+      <Screen screenValue={screenValue} />
       <ButtonBox keyboardHandler={keyboardHandler} />
     </div>
   );
