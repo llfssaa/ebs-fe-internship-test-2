@@ -2,6 +2,8 @@ import React from 'react';
 import Screen from '../../atoms/Screen/Screen';
 import ButtonBox from '../ButtonBox/ButtonBox';
 import './calculator.scss';
+import { btnNum } from '../../../config';
+import { isSign } from '../../../helpers';
 
 function Calculator() {
   const [screenValue, setScreenValue] = React.useState('0');
@@ -32,28 +34,19 @@ function Calculator() {
         setScreenValue(value);
     }
   };
-  const keyboardHandler = (value: string): void => {
-    console.log(value);
-    const btnNum = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0'];
+  const screenDriver = (value: string) => {
     if (btnNum.includes(value)) {
-      if (
-        screenValue === '0' ||
-        screenValue.includes('+') ||
-        screenValue.includes('-') ||
-        screenValue.includes('*') ||
-        screenValue.includes('/') ||
-        screenValue.includes('%')
-      ) {
+      if (screenValue === '0' || isSign(screenValue)) {
         setScreenValue(value);
       } else {
-        setScreenValue(screenValue + value);
+        setScreenValue((prev) => prev + value);
       }
     }
     if (value === '.') {
       if (screenValue === '0') {
         setScreenValue('0.');
       } else {
-        setScreenValue(screenValue + value);
+        setScreenValue((prev) => prev + value);
       }
     }
     if (value === '+/-' && screenValue !== '0') {
@@ -68,16 +61,14 @@ function Calculator() {
       setScreenValue('0');
       setSign('');
     }
-
+  };
+  const keyboardHandler = (value: string): void => {
+    screenDriver(value);
     if (value === '=') {
       mainLogic(screenValue, screenValuePrev.current, sign);
       setSign('');
     }
-    console.log(`sign= ${sign}`);
-    console.log(`screenValuePrev= ${screenValuePrev.current}`);
-    console.log(`screenValue= ${screenValue}`);
   };
-  // const screenDriver = (value: string) => {};
   return (
     <div className="wrapper">
       <Screen screenValue={screenValue} />
