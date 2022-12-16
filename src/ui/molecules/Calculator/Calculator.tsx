@@ -9,8 +9,6 @@ function Calculator() {
   const [screenValue, setScreenValue] = React.useState('0');
   const [sign, setSign] = React.useState<string>('');
 
-  console.log('screenValue ', screenValue);
-
   const screenValuePrev = React.useRef(screenValue);
   const calcValue = React.useRef({ first: 0, second: 0 });
   const isSetSign = () => {
@@ -42,7 +40,6 @@ function Calculator() {
         return value.toString();
     }
   };
-  /* const calculatorLogic = (value: string): void => {}; */
   const screenDriver = (value: string) => {
     if (screenValue.length > 9 && btnNum.includes(value)) return;
     if (btnNum.includes(value)) {
